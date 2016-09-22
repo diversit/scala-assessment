@@ -15,21 +15,22 @@ libraryDependencies ++= {
   val finatraVersion = "2.1.4"
 
   Seq(
+    "com.typesafe.akka" %% "akka-cluster" % akkaVersion,
+    "org.slf4j" % "slf4j-simple" % "1.7.21",
+
     "org.scala-lang" % "scala-reflect" % scalaVersion.value,
 
     // Finatra Http
     "com.twitter.finatra" %% "finatra-http" % finatraVersion,
     "com.twitter.finatra" %% "finatra-httpclient" % finatraVersion,
     "com.twitter.finatra" %% "finatra-slf4j" % finatraVersion,
-    "com.twitter" %% "finagle-stats" % "6.33.0" excludeAll(
-      ExclusionRule("asm") // exclude because of conflict creating test report with PegDown
-    ),
+    "com.twitter" %% "finagle-stats" % "6.33.0" excludeAll ExclusionRule("asm"), // exclude because of conflict creating test report with PegDown,
+    "com.twitter" % "bijection-core_2.11" % "0.9.2",
+    "com.twitter" % "bijection-util_2.11" % "0.9.2",
 
-    "com.typesafe.akka" %% "akka-actor" % akkaVersion,
-    "com.typesafe.akka" %% "akka-slf4j"  % akkaVersion,
     "com.typesafe.akka" %% "akka-testkit" % akkaVersion % "test",
 
-      // Test
+    // Test
     "org.scalatest" % "scalatest_2.11" % scalaTestVersion % "test",
     "org.pegdown" % "pegdown" % "1.4.2" % "test",         // needed by scalatest for html report
     "org.scalacheck" %% "scalacheck" % "1.12.4" % "test", // needed by scalatest for property based tests
